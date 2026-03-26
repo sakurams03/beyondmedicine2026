@@ -82,3 +82,15 @@ navBtns.forEach(btn => {
         });
     });
 });
+
+// Accordion Toggle Logic
+const accordionHeaders = document.querySelectorAll(".accordion-header");
+
+accordionHeaders.forEach(header => {
+    header.addEventListener("click", () => {
+        const accordionItem = header.parentElement;
+        
+        // Toggle active class on the clicked item
+        accordionItem.classList.toggle("active");
+    });
+});
