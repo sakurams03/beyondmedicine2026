@@ -2,29 +2,35 @@
 const title = document.getElementById("main-title");
 
 if (title) {
-    // Get the text and clear it
-    const text = title.textContent;
+    // Get the HTML nodes to preserve <br> tags
+    const contentNodes = Array.from(title.childNodes);
     title.innerHTML = "";
 
     let delay = 0;
 
-    // Wrap each character in a <span> for letter animation
-    for (let i = 0; i < text.length; i++) {
-        const span = document.createElement("span");
+    contentNodes.forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+            const text = node.textContent;
+            for (let i = 0; i < text.length; i++) {
+                const span = document.createElement("span");
 
-        if (text[i] === " ") {
-            span.innerHTML = "&nbsp;"; // Preserve spaces
-        } else {
-            span.textContent = text[i];
+                if (text[i] === " " || text[i] === "\n") {
+                    span.innerHTML = "&nbsp;"; // Preserve spaces
+                } else {
+                    span.textContent = text[i];
+                }
+
+                span.classList.add("letter");
+                span.style.animationDelay = `${delay}s`;
+                title.appendChild(span);
+
+                // Stagger animation delay
+                delay += 0.05;
+            }
+        } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === "BR") {
+            title.appendChild(document.createElement("br"));
         }
-
-        span.classList.add("letter");
-        span.style.animationDelay = `${delay}s`;
-        title.appendChild(span);
-
-        // Stagger animation delay
-        delay += 0.05;
-    }
+    });
 }
 
 // Navigation and Section Toggling Logic
@@ -94,3 +100,14 @@ accordionHeaders.forEach(header => {
         accordionItem.classList.toggle("active");
     });
 });
+
+// Hero Carousel Logic
+const carouselImages = document.querySelectorAll('.hero-carousel-img');
+if (carouselImages.length > 0) {
+    let currentImageIndex = 0;
+    setInterval(() => {
+        carouselImages[currentImageIndex].classList.remove('active');
+        currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
+        carouselImages[currentImageIndex].classList.add('active');
+    }, 4000); // 4 seconds per image
+}
