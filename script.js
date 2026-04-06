@@ -111,3 +111,14 @@ if (carouselImages.length > 0) {
         carouselImages[currentImageIndex].classList.add('active');
     }, 4000); // 4 seconds per image
 }
+
+// Explore Button Logic
+const exploreBtn = document.getElementById("explore-btn");
+const pathwaysSection = document.getElementById("explore-pathways");
+
+if (exploreBtn && pathwaysSection) {
+    exploreBtn.addEventListener("click", () => {
+        pathwaysSection.classList.add("active");
+        exploreBtn.style.display = "none"; // Hide button once clicked
+    });
+}

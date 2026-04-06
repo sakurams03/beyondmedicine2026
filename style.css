@@ -4,9 +4,8 @@
     align-items: center;
     justify-content: space-between;
     background-color: transparent;
-    padding: 120px 40px 60px;
-    text-align: left;
-    min-height: 75vh;
+    padding: 120px 40px 10px; /* Reduced bottom padding */
+    min-height: auto; /* Allow it to adjust naturally */
     gap: 40px;
     width: 100%;
     box-sizing: border-box;
@@ -83,7 +82,7 @@
 @media (max-width: 992px) {
     .hero-split {
         flex-direction: column;
-        padding: 130px 20px 40px;
+        padding: 130px 20px 10px; /* Reduced bottom padding */
         text-align: center;
     }
 
@@ -142,7 +141,7 @@
 
     /* Miniature PC View for Mobile */
     #main-title {
-        font-size: 14px;
+        font-size: 28px;
         text-align: left;
         white-space: normal;
         margin: 0;
@@ -214,6 +213,11 @@
         line-height: 1.6;
     }
 
+    .hero-caption {
+        font-size: 32px;
+        margin-top: 20px;
+    }
+
     /* Careers Mobile Styles */
     .careers-intro {
         padding: 30px 20px;
@@ -264,7 +268,7 @@ body {
 
 #main-title {
     margin: 0;
-    font-size: clamp(36px, 4vw, 64px); /* Scaled down to keep 'Biology Careers' on one line */
+    font-size: clamp(48px, 6vw, 96px); /* Made title significantly bigger */
     line-height: 1.15;
     text-align: left;
     width: 100%;
@@ -331,25 +335,105 @@ body {
 }
 
 .hero-cta {
-    background: linear-gradient(135deg, #3498db, #2c3e50);
-    color: white;
-    border: none;
-    padding: 16px 40px;
+    background: #ffffff;
+    color: #2c3e50;
+    border: 2px solid #2c3e50;
+    padding: 14px 38px;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 700;
     border-radius: 50px;
     cursor: pointer;
-    box-shadow: 0 10px 20px rgba(44, 62, 80, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
     opacity: 0;
+    margin-top: 20px;
+    display: inline-block;
     transform: translateY(20px);
-    animation: fadeInUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.5s forwards;
+    animation: fadeInUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s forwards;
 }
 
 .hero-cta:hover {
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 15px 25px rgba(44, 62, 80, 0.3);
-    background: linear-gradient(135deg, #2980b9, #1a252f);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    background: #2c3e50;
+    color: #ffffff;
+}
+
+/* Pathways Section */
+.hidden-pathways {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+    padding: 0 20px 60px;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.hidden-pathways.active {
+    display: flex;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.pathways-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.pathways-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.pathway-card {
+    background: #ffffff;
+    border: 2px solid transparent;
+    border-top: 6px solid var(--card-color);
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: #2c3e50;
+}
+
+.pathway-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border-color: var(--card-color);
+}
+
+.card-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.pathway-card h5 {
+    font-size: 20px;
+    margin: 0;
+    font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+    .pathways-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .pathways-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 @keyframes fadeInUp {
@@ -357,6 +441,38 @@ body {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
+}
+
+.full-width-caption-container {
+    width: 100%;
+    text-align: center;
+    padding: 0 20px 20px; /* Reduced top padding */
+    margin-top: -10px; /* Negative margin to pull it closer */
+    margin-bottom: 40px;
+    box-sizing: border-box;
+}
+
+.hero-caption {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.4;
+    padding: 5px 0;
+    background: linear-gradient(90deg, #e74c3c, #9b59b6, #3498db, #e74c3c);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: 
+        fadeInUp 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.6s forwards,
+        gradientShine 4s linear infinite;
+}
+
+@keyframes gradientShine {
+    0% { background-position: 0% center; }
+    100% { background-position: 300% center; }
 }
 
 #pre-header {
