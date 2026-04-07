@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biology Careers Across STEM</title>
     <link rel="stylesheet" href="style.css"> <!-- Connect CSS -->
+    <!-- FontAwesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
     <div id="pre-header">
@@ -75,21 +77,54 @@
                 <h4 class="pathways-title">Here Are Four Powerful Pathways in Biology</h4>
                 <div class="pathways-grid">
                     <div class="pathway-card" style="--card-color: #3498db;">
-                        <div class="card-icon">🔬</div>
-                        <h5>Bioscience Field</h5>
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-icon">🔬</div>
+                                <h5>Bioscience Field</h5>
+                            </div>
+                            <div class="card-back">
+                                <p class="card-desc">Where curiosity meets discovery to understand the living world around us.</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="pathway-card" style="--card-color: #9b59b6;">
-                        <div class="card-icon">💻</div>
-                        <h5>Biotechnology Field</h5>
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-icon">💻</div>
+                                <h5>Biotechnology Field</h5>
+                            </div>
+                            <div class="card-back">
+                                <p class="card-desc">Where biology meets technology to create solutions that transform medicine, food, and the environment.</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="pathway-card" style="--card-color: #e74c3c;">
-                        <div class="card-icon">⚙️</div>
-                        <h5>Bioengineering Field</h5>
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-icon">⚙️</div>
+                                <h5>Bioengineering Field</h5>
+                            </div>
+                            <div class="card-back">
+                                <p class="card-desc">Where biology meets engineering to design and build the medical innovations of tomorrow.</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="pathway-card" style="--card-color: #2ecc71;">
-                        <div class="card-icon">📊</div>
-                        <h5>Biomathematics Field</h5>
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-icon">📊</div>
+                                <h5>Biomathematics Field</h5>
+                            </div>
+                            <div class="card-back">
+                                <p class="card-desc">Where biology meets mathematics to solve the world's most complex scientific problems.</p>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                
+                <div class="quiz-cta-section">
+                    <h4>Excited to discover where you belong?</h4>
+                    <button id="home-quiz-btn" class="journey-btn">Let’s Find Your Path</button>
                 </div>
             </div>
         </section>
@@ -110,7 +145,49 @@
         </section>
 
         <section id="careers" class="page-section hidden">
-            <!-- Find your path content will be added here later -->
+            <div class="section-content quiz-container">
+                <h2>Find Your Path</h2>
+                <p class="section-tagline">Discover which biology-related STEM field suits you best.</p>
+                
+                <!-- Quiz Area -->
+                <div id="quiz-area">
+                    <div class="quiz-progress-wrapper">
+                        <div class="progress-info">
+                            <span id="question-counter">Question 1 of 10</span>
+                            <span id="progress-percentage">10%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div id="quiz-progress-bar"></div>
+                        </div>
+                    </div>
+
+                    <div id="quiz-content">
+                        <!-- Questions will be dynamically injected here by script.js -->
+                    </div>
+                </div>
+
+                <!-- Quiz Loading Area -->
+                <div id="quiz-loading" class="hidden">
+                    <div class="loader-content">
+                        <div class="dna-spinner"></div>
+                        <p>Analyzing your profile...</p>
+                        <span class="loading-status">Connecting your interests to STEM fields</span>
+                    </div>
+                </div>
+
+                <!-- Quiz Result Area -->
+                <div id="quiz-result" class="hidden">
+                    <h3 class="result-title">Your ideal path is...</h3>
+                    <div class="result-highlight" id="result-highlight-box">
+                        <h1 id="result-path-name"></h1>
+                        <p id="result-path-desc"></p>
+                    </div>
+                    <div class="result-actions">
+                        <button id="explore-path-btn" class="hero-cta">Explore Careers</button>
+                        <button id="retake-quiz-btn" class="hero-cta secondary">Retake Quiz</button>
+                    </div>
+                </div>
+            </div>
         </section>
         <section id="science" class="page-section hidden">
             <div class="section-content">
@@ -139,7 +216,7 @@
                     </div>
                     <div class="accordion-item" style="--accent-color: #1abc9c;">
                         <button class="accordion-header">
-                            <span>Marine biologist</span>
+                            <span>Marine Biologist</span>
                             <span class="icon">+</span>
                         </button>
                         <div class="accordion-content">
@@ -688,7 +765,26 @@
     </div>
 
     <footer class="site-footer">
-        <!-- Blank footer section -->
+        <div class="footer-container">
+            <p class="footer-tagline">Helping students explore diverse biology careers beyond traditional paths.</p>
+            <div class="footer-nav">
+                <a href="#" class="footer-link" data-target="home">Home</a>
+                <a href="#" class="footer-link" data-target="vision">Vision and Mission</a>
+                <a href="#" class="footer-link" data-target="about">About Us</a>
+                <a href="#" class="footer-link" data-target="careers">Careers</a>
+                <a href="mailto:sakurams03@gmail.com" class="footer-link">Contact Us</a>
+            </div>
+            <div class="footer-social">
+                <span class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></span>
+                <span class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></span>
+                <span class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></span>
+                <span class="social-icon" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></span>
+                <span class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></span>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Biology Careers Across STEM. All rights reserved.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script> <!-- Connect JS -->
