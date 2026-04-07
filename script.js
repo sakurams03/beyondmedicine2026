@@ -158,6 +158,53 @@ footerLinks.forEach(link => {
     });
 });
 
+// Footer Feedback Form
+const feedbackForm = document.getElementById("feedback-form");
+const feedbackStatus = document.getElementById("feedback-status");
+const feedbackBtn = feedbackForm ? feedbackForm.querySelector(".feedback-submit-btn") : null;
+
+if (feedbackForm) {
+    feedbackForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        
+        // Prepare data
+        const formData = new FormData(feedbackForm);
+        
+        // Show loading state
+        if (feedbackBtn) {
+            feedbackBtn.textContent = "...";
+            feedbackBtn.disabled = true;
+        }
+
+        try {
+            const response = await fetch(feedbackForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                feedbackStatus.classList.remove("hidden");
+                feedbackForm.reset();
+                setTimeout(() => {
+                    feedbackStatus.classList.add("hidden");
+                }, 5000);
+            } else {
+                alert("Oops! There was a problem sending your feedback.");
+            }
+        } catch (error) {
+            alert("Oops! There was a problem sending your feedback.");
+        } finally {
+            if (feedbackBtn) {
+                feedbackBtn.textContent = "Send";
+                feedbackBtn.disabled = false;
+            }
+        }
+    });
+}
+
 // ---- QUIZ LOGIC ----
 const quizQuestions = [
     {
