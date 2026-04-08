@@ -72,7 +72,7 @@ navBtns.forEach(btn => {
             careersItems.forEach(item => item.classList.remove("hidden-nav-item"));
             hamburger.classList.add("hidden-nav-item");
             if (navbar) navbar.classList.add("careers-view");
-        } else if (["home", "vision", "about"].includes(targetId)) {
+        } else if (["home", "vision", "about", "references"].includes(targetId)) {
             normalItems.forEach(item => item.classList.remove("hidden-nav-item"));
             careersItems.forEach(item => item.classList.add("hidden-nav-item"));
             hamburger.classList.remove("hidden-nav-item");

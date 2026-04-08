@@ -1505,3 +1505,48 @@ body {
         font-size: 36px;
     }
 }
+
+/* References Styling */
+.references-list {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: left;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.reference-item {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444;
+    text-align: justify;
+    margin-bottom: 15px; /* Added margin for better separation between references */
+}
+
+.reference-item em {
+    font-style: italic;
+    color: #2c3e50;
+}
+
+.reference-item a {
+    color: #3498db;
+    text-decoration: none;
+    word-break: break-all;
+}
+
+.reference-item a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .references-list {
+        padding: 0 10px;
+    }
+    
+    .reference-item {
+        font-size: 14px;
+    }
+}
