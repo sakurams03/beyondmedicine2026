@@ -65,15 +65,18 @@ navBtns.forEach(btn => {
         // Toggle normal items (including Home) and careers items based on target section
         const normalItems = document.querySelectorAll(".nav-item-normal");
         const careersItems = document.querySelectorAll(".nav-item-careers");
+        const navbar = document.querySelector(".navbar");
 
-        if (["careers", "science", "technology", "engineering", "mathematics"].includes(targetId)) {
+        if (["careers", "science", "technology", "engineering", "mathematics", "explore"].includes(targetId)) {
             normalItems.forEach(item => item.classList.add("hidden-nav-item"));
             careersItems.forEach(item => item.classList.remove("hidden-nav-item"));
             hamburger.classList.add("hidden-nav-item");
+            if (navbar) navbar.classList.add("careers-view");
         } else if (["home", "vision", "about"].includes(targetId)) {
             normalItems.forEach(item => item.classList.remove("hidden-nav-item"));
             careersItems.forEach(item => item.classList.add("hidden-nav-item"));
             hamburger.classList.remove("hidden-nav-item");
+            if (navbar) navbar.classList.remove("careers-view");
         }
 
         // Hide all sections and show the target section
@@ -147,14 +150,17 @@ if (homeQuizBtn) {
 const footerLinks = document.querySelectorAll(".footer-link");
 footerLinks.forEach(link => {
     link.addEventListener("click", (e) => {
-        e.preventDefault();
         const target = link.getAttribute("data-target");
-        // Reuse the existing navigation logic by finding the correct nav-btn
-        const navBtn = document.querySelector(`.nav-btn[data-target="${target}"]`);
-        if (navBtn) {
-            navBtn.click();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (target) {
+            e.preventDefault();
+            // Reuse the existing navigation logic by finding the correct nav-btn
+            const navBtn = document.querySelector(`.nav-btn[data-target="${target}"]`);
+            if (navBtn) {
+                navBtn.click();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
+        // If no data-target (like Contact Us), let the natural link action (mailto:) happen
     });
 });
 
