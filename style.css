@@ -1,7 +1,7 @@
 .hero-split {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
     background-color: transparent;
     padding: 120px 40px 10px; /* Reduced bottom padding */
@@ -15,14 +15,14 @@
     flex: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     overflow: hidden;
 }
 
 .hero-carousel {
     width: 100%;
     max-width: 600px;
-    aspect-ratio: 4 / 3;
+    height: 100%;
     position: relative;
     box-shadow: 0 15px 35px rgba(0,0,0,0.15);
     background-color: #f8f9fa;
@@ -30,7 +30,7 @@
     transform: translateX(-50px);
     animation: imageEntrance 1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
     overflow: hidden;
-    /* Removed border-radius as requested previously */
+    border-radius: 15px;
 }
 
 .hero-carousel-img {
@@ -101,6 +101,8 @@
     .hero-carousel {
         max-width: 90%;
         margin: 0 auto;
+        height: auto;
+        aspect-ratio: 4 / 3;
     }
 
     #logo {
@@ -298,20 +300,46 @@ body {
 
 .hero-attention-text {
     font-size: 19px;
-    line-height: 1.6;
+    line-height: 1.7;
     color: #34495e;
     margin-top: 25px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     max-width: 95%;
-    padding-left: 20px;
-    border-left: 4px solid #3498db;
-    background: linear-gradient(to right, rgba(52, 152, 219, 0.05), transparent);
-    padding-top: 15px;
-    padding-bottom: 15px;
-    border-radius: 4px;
+    padding: 25px 30px;
+    border-left: 5px solid #3498db;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.2s forwards;
+    animation: fadeInUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.8s forwards;
+    position: relative;
+    overflow: hidden;
+}
+
+.attn-para-1, .attn-para-2, .attn-para-3 {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.attn-para-1 { animation-delay: 1.4s; }
+.attn-para-2 { animation-delay: 1.8s; }
+.attn-para-3 { 
+    animation-delay: 2.2s; 
+    font-weight: 700;
+    color: #2c3e50;
+    font-size: 21px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(52, 152, 219, 0.2);
+}
+
+.attn-para-1 strong {
+    color: #2c3e50;
+    font-size: 20px;
 }
 
 .hero-attention-text p {
@@ -845,7 +873,8 @@ body {
 #science .section-content h2,
 #technology .section-content h2,
 #engineering .section-content h2,
-#mathematics .section-content h2 {
+#mathematics .section-content h2,
+#explore .section-content h2 {
     font-size: 48px;
     color: #2c3e50; /* Dark Charcoal from Careers */
     margin-top: 0;
@@ -890,7 +919,7 @@ body {
 }
 
 /* Careers Section Styles */
-#careers, #science, #technology, #engineering, #mathematics {
+#careers, #science, #technology, #engineering, #mathematics, #explore {
     display: none;
     align-items: center;
     justify-content: center;
@@ -900,7 +929,7 @@ body {
 
 /* collage.jpg removed to use global background image */
 
-#careers.active, #science.active, #technology.active, #engineering.active, #mathematics.active {
+#careers.active, #science.active, #technology.active, #engineering.active, #mathematics.active, #explore.active {
     display: flex;
 }
 
@@ -909,7 +938,8 @@ body {
 #science .section-content, 
 #technology .section-content, 
 #engineering .section-content, 
-#mathematics .section-content {
+#mathematics .section-content,
+#explore .section-content {
     max-width: 900px;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.9);
@@ -922,7 +952,8 @@ body {
 #science .section-content h2,
 #technology .section-content h2,
 #engineering .section-content h2,
-#mathematics .section-content h2 {
+#mathematics .section-content h2,
+#explore .section-content h2 {
     background: transparent; /* Remove any override */
 }
 
@@ -1136,9 +1167,9 @@ body {
     }
 }
 
-/* Ensure accordion content can expand enough for the image/text */
+/* Ensure accordion content can expand enough for the image/text/grids */
 .accordion-item.active .accordion-content {
-    max-height: 1000px; /* Increased from 500px */
+    max-height: 2500px; 
 }
 
 /* --- Find Your Path Quiz Styles --- */
@@ -1549,4 +1580,71 @@ body {
     .reference-item {
         font-size: 14px;
     }
+}
+
+/* Career List Grids (Work & Skills) */
+.career-work-info, .career-skills-info {
+    margin: 15px 0;
+}
+
+.career-work-info p, .career-skills-info p {
+    margin-bottom: 8px !important;
+}
+
+.work-grid, .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 20px;
+    padding-left: 20px;
+    margin: 0;
+    list-style-type: disc;
+}
+
+.work-grid li, .skills-grid li {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #444;
+}
+
+.work-grid li::marker, .skills-grid li::marker {
+    color: #000;
+}
+
+@media (max-width: 600px) {
+    .work-grid, .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.career-requirements {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.career-requirements p {
+    margin-bottom: 8px !important;
+    color: #444;
+}
+
+.req-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.req-list li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.2rem;
+    position: relative;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #444;
+}
+
+.req-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #000;
+    font-weight: bold;
 }
